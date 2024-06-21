@@ -1,0 +1,62 @@
+{% extends 'temp/main_manager.html' %}
+{% block base %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>TURF DETAILS</title>
+</head>
+<body>
+
+	<center>
+		<h1>TURF DETAILS</h1>
+		<form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+			<table>
+				<tr>
+					<td style="color: #0e0e0e"> TURF NAME:</td>
+					<td><input type="text" name="tnm" required="" style="border-radius: 7px"class="form-control"></td>
+				</tr>
+				<tr>
+					<td style="color: #0e0e0e">LOCATION:</td>
+					<td><input type="text" name="tloc" required="" style="border-radius: 7px" class="form-control"></td>
+				</tr>
+				<tr>
+					<td style="color: #0e0e0e">EMAIL:</td>
+					<td><input type="email" name="tmail" required="" style="border-radius: 7px" class="form-control"></td>
+				</tr>
+				<tr>
+					<td style="color: #0e0e0e">IMAGE:</td>
+					<td><input type="file" name="timg" required="" style="border-radius: 7px;color: black"></td>
+				</tr>
+				<tr>
+					<td style="color: #0e0e0e">CATEGORY:</td>
+					<td><select name="st" required="" style="border-radius: 7px" class="form-control">
+						<option>----Select----</option>
+                        {% for i in y %}
+                        <option value="{{ i.category_id }}">{{ i.category }}</option>
+                        {% endfor %}
+					</select>
+				</td>
+				</tr>
+
+				<tr>
+					<td></td>
+					<td><input type="submit" name="btn" value="SUBMIT" style="border-radius: 7px"></td>
+				</tr>
+			</table>
+		</form>
+
+            {% if msg == "ok" %}
+                <script>
+                alert("Turf Added Succesfully")
+                </script>
+            {% elif msg == "user exist" %}
+                 <script>
+                 alert("User with same phone number or email exist")
+                 </script>
+            {% endif %}
+
+	</center>
+</body>
+</html>
+{% endblock %}

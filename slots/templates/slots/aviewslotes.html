@@ -1,0 +1,33 @@
+{% extends 'temp/main_admin.html' %}
+{% block base %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>SLOT</title>
+</head>
+<body>
+	<center>
+	<h1>SLOT</h1>
+	<table border="2" class="table table-striped">
+		<tr style="color: black">
+			<th>Turfname</th>
+            <th>Location</th>
+{#			<td>sno</td>#}
+			<th>start time</th>
+			<th>end time</th>
+		</tr>
+        {% for i in b %}
+		<tr style="color: black">
+			<td>{{ i.turf.turfname}}</td>
+            <td>{{ i.turf.location }}</td>
+{#			<td>{{ i.slot_id}}</td>#}
+			<td>{{ i.start_time }}</td>
+			<td>{{ i.end_time }}</td>
+			
+		</tr>
+        {% endfor %}
+		</table>
+	</center>
+</body>
+</html>
+{% endblock %}

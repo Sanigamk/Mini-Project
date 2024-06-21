@@ -1,0 +1,47 @@
+{% extends 'temp/main_user.html' %}
+{% block base %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Approved&pay</title>
+</head>
+<body>
+
+	<center>
+	<h1 style="color: black">APPROVED&PAY</h1>
+	<table border="2" class="table table-striped">
+		<tr style="color: black">
+			<th>Turf name</th>
+			<th>Location</th>
+			<th>Image</th>
+			<th>Category</th>
+			<th>Date</th>
+			<th>Start time</th>
+            <th>End time</th>
+			<th>Price</th>
+			<th>Status</th>
+{#            <th>Payment Status</th>#}
+		</tr>
+        {% for i in b %}
+		<tr style="color: black">
+			<td>{{ i.slot.turf.turfname }}</td>
+			<td>{{ i.slot.turf.location}}</td>
+            <td><img src="/static/{{ i.slot.turf.image }}" height="50" width="50"> </td>
+{#			<td>{{ i.slot.turf.image}}</td>#}
+			<td>{{ i.slot.turf.category.category}}</td>
+			<td>{{ i.date }}</td>
+			<td>{{ i.slot.start_time}}</td>
+			<td>{{ i.slot.end_time }}</td>
+            <td>{{ i.slot.price }}</td>
+            <td>{{ i.status }}</td>
+{#            <td>{{ i.pay_status }}</td>#}
+
+			 <td><a href="/payment/payment/{{ i.slot_id }}" class="btn btn-outline-primary" style="border-radius: 15px">PAY</a></td>
+            <td><a href="/booking/can/{{ i.booking_id }}" class="btn btn-outline-primary" style="border-radius: 15px">CANCEL</a></td>
+		</tr>
+        {% endfor %}
+		</table>
+	</center>
+</body>
+</html>
+{% endblock %}

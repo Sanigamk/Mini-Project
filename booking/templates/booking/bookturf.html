@@ -1,0 +1,76 @@
+{% extends 'temp/main_user.html' %}
+{% block base %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>TURF BOOK DETAILS</title>
+</head>
+<body>
+
+	<center>
+		<h1> TURF BOOK DETAILS</h1>
+		<form method="post">
+            {% csrf_token %}
+			<table>
+				<tr>
+					<td style="color: #0e0e0e"> TURF NAME:</td>
+					<td><input type="text" name="tnm" value="{{ xx.turf.turfname }}"readonly class="form-control" style="border-radius: 7px" ></td>
+				</tr>
+				<tr>
+					<td style="color: #0e0e0e">LOCATION:</td>
+					<td><input type="text" name="tloc" value="{{ xx.turf.location }}"readonly class="form-control" style="border-radius: 7px"></td>
+				</tr>
+				<tr>
+					<td style="color: #0e0e0e">IMAGE:</td>
+{#                    <td> value="/static/{{ xx.turf.image }}"  width="50" height="50" readonly class="form-control" style="border-radius: 7px"></td>#}
+{#					<td ><img src="/static/gg/"  height="45px" width="45px"></td>#}
+                    <td ><img src="/static/{{ xx.turf.image }}"  height="45px" width="45px"></td>
+				</tr>
+				<tr>
+					<td style="color: #0e0e0e">CATEGORY:</td>
+					<td style="color: #0e0e0e"><input type="text" name="ts" value="{{ xx.turf.category.category }}" required class="form-control"style="border-radius: 7px" ></td>
+				</tr>
+				<tr>
+					<td style="color: #0e0e0e">DATE:</td>
+					<td><input type="date" name="td" min="{{ dt }}" required class="form-control" style="border-radius: 7px"style="border-radius: 7px"></td>
+				</tr>
+				<tr>
+					<td style="color: #0e0e0e">Slots:</td>
+				</tr>
+				<tr>
+					<td style="color: #0e0e0e">START TIME:</td>
+					<td><input type="time" name="st" value="{{ xx.start_time }}"readonly class="form-control" style="border-radius: 7px"></td>
+				</tr>
+				<tr>
+					<td style="color: #0e0e0e">ENDTIME:</td>
+					<td><input type="time" name="et" value="{{ xx.end_time }}"readonly class="form-control"style="border-radius: 7px" ></td>
+				</tr>
+
+				<tr>
+					<td style="color: #0e0e0e">PRICE:</td>
+					<td><input type="text" name="tp" value="{{ xx.price }}"readonly class="form-control" style="border-radius: 7px"></td>
+				</tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                </tr>
+				<tr>
+					<td></td>
+					<td><input type="submit" name="btn" value="SUBMIT" class="btn btn-primary" style="height: 35px;width: 150px;border-radius:15px;color: #0e0e0e " ></td>
+				</tr>
+                <br>
+			</table>
+		</form>
+        {% if msg == "success" %}
+        <script>
+            alert("Booking Successfully Complted")
+        </script>
+        {% endif %}
+	</center>
+</body>
+</html>
+{% endblock %}

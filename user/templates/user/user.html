@@ -1,0 +1,68 @@
+{% extends 'temp/main_home.html' %}
+{% block base %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>USE REGISTRATION</title>
+</head>
+<body>
+	<center>
+		<h1>USER REGISTRATION</h1>
+		<form method="post">
+            {% csrf_token %}
+			<table>
+				<tr>
+					<td style="color: #0e0e0e">NAME:</td>
+					<td><input type="text" name="unm" required class="form-control"></td>
+				</tr>
+				<tr>
+					<td style="color: #0e0e0e">AGE:</td>
+					<td><input type="number" name="uage" required pattern="[0-9]{2}" minlength="2" maxlength="2" class="form-control"></td>
+				</tr>
+				<tr>
+					<td style="color: #0e0e0e">EMAIL:</td>
+					<td><input type="text" name="umail" required class="form-control"></td>
+				</tr>
+				<tr>
+					<td style="color: #0e0e0e">HOUSE NAME:</td>
+					<td><input type="text" name="uhs" required class="form-control"></td>
+				</tr>
+				<tr>
+					<td style="color: #0e0e0e">POST:</td>
+					<td><input type="text" name="upst" required class="form-control"></td>
+				</tr>
+                <tr>
+					<td style="color: #0e0e0e">PIN:</td>
+					<td><input type="text" name="upin" required pattern="[0-9]{6}" maxlength="6" minlength="6" class="form-control"></td>
+				</tr>
+				<tr>
+					<td style="color: #0e0e0e">DISTRICT:</td>
+					<td><input type="text" name="ust" value="Calicut" readonly class="form-control"></td>
+				</tr>
+				<tr>
+					<td style="color: #0e0e0e">PHN NO:</td>
+					<td><input type="text" name="upn" required pattern="[0-9]{10}" maxlength="10" minlength="10" class="form-control"></td>
+				</tr>
+				<tr>
+					<td style="color: #0e0e0e">PASSWORD:</td>
+					<td><input type="password" name="upsw" required minlength="6" maxlength="6" class="form-control"></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><input type="submit" name="btn" value="SUBMIT"></td>
+				</tr>
+			</table>
+		</form>
+        {% if msg == "success"%}
+    <script>
+     alert("Successfuly Registered")
+    </script>
+     {% elif msg == "User exist" %}
+     <script>
+     alert("User with same phone number or email exist")
+     </script>
+{% endif %}
+	</center>
+</body>
+</html>
+{% endblock %}

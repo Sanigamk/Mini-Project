@@ -1,0 +1,44 @@
+{% extends 'temp/main_home.html' %}
+{% block base %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>LOGIN</title>
+</head>
+<body>
+
+	<center>
+		<h1 class="card-header bg-primary text-center p-4" style="color: white">LOGIN</h1>
+		<form method="post" class="card-body rounded-bottom bg-white p-5">
+            {% csrf_token %}
+			<table>
+				<tr>
+{#					<td>email id:</td>#}
+					<td><input type="email" name="unm" class="form-control p-4" placeholder="Enter Email" style="width: 300px" ></td>
+				</tr>
+				<tr>
+{#					<td>password:</td>#}
+					<td><input type="password" name="psw" class="form-control p-4" placeholder="Enter your password" style="width: 300px"></td>
+				</tr>
+                <tr>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                </tr>
+				<tr>
+{#					<td></td>#}
+					<td><input type="submit" name="btn" value="LOGIN" class="btn btn-primary btn-block py-3"style="width: 300px"></td>
+				</tr>
+			</table>
+		</form>
+	</center>
+</body>
+</html>
+
+
+
+{% endblock %}

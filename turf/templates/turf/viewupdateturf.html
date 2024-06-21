@@ -1,0 +1,39 @@
+{% extends 'temp/main_manager.html' %}
+{% block base %}
+<html>
+<head>
+	<title>TURF DETAILS</title>
+</head>
+<body>
+
+<center>
+	<td>
+	<h1>TURF DETAILS</h1>
+	<table border="2" class="table table-striped">
+		<tr style="color: black">
+			<th>turfname</th>
+			<th>location</th>
+			<th>email</th>
+			<th>image</th>
+			<th>category</th>
+{#			<td>price</td>#}
+		</tr>
+        {% for i in c %}
+
+		<tr style="color: black">
+			<td>{{ i.turfname }}</td>
+			<td>{{ i.location }}</td>
+			<td>{{ i.email }}</td>
+			    <td><a href="/static/{{ i.image }}"><img src="/static/{{ i.image }}" style="height: 50px;width: 50px"></a> </td>
+			<td>{{ i.category.category}}</td>
+{#			<td>{{ i.price }}</td>#}
+			<td><a href="/turf/upturf/{{ i.turf_id }}#uu">UPDATE</a></td>
+			<td><a href="/turf/delete/{{ i.turf_id }}">DELETE</a></td>
+		</tr>
+        {% endfor %}
+
+	</table>
+</centre>
+</body>
+</html>
+{% endblock %}

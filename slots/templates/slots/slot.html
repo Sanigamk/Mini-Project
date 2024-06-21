@@ -1,0 +1,49 @@
+{% extends 'temp/main_manager.html' %}
+{% block base %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>SLOTS</title>
+</head>
+<body>
+	<center>
+		<h1>SLOT</h1>
+		<form method="post">
+            {% csrf_token %}
+			<table>
+				<tr>
+					<td style="color: #0e0e0e">Turf</td>
+					<td><select name="tn" required class="form-control">
+						<option>----Select----</option>
+                        {% for i in y %}
+						<option value="{{ i.turf_id }}">{{ i.turfname }}</option>
+						{% endfor %}
+					</select></td>
+				</tr>
+				<tr>
+					<td style="color: #0e0e0e">START TIME:</td>
+					<td><input type="time" name="sst" required class="form-control"></td>
+				</tr>
+				<tr>
+					<td style="color: #0e0e0e">END TIME:</td>
+					<td><input type="time" name="set" required class="form-control"></td>
+				</tr>
+				<tr>
+					<td style="color: #0e0e0e">PRICE</td>
+					<td><input type="text" name="sprice" required class="form-control"></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><input type="submit" name="btn" value="SUBMIT"></td>
+				</tr>
+			</table>
+		</form>
+            {% if msg == "success" %}
+               <script>
+                   alert("Slot add succesfully")
+               </script>
+            {% endif %}
+	</center>
+</body>
+</html>
+{% endblock %}

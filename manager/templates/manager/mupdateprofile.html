@@ -1,0 +1,60 @@
+{% extends 'temp/main_manager.html' %}
+{% block base %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>MANAGER REGISTRATION</title>
+</head>
+<body>
+
+	<center>
+		<h1>MANAGER UPDATE</h1>
+		<form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+			<table>
+				<tr>
+					<td style="color: #0e0e0e">COMPANY NAME:</td>
+					<td><input type="text" name="mcn" value="{{ b.company_name }}" style="border-radius: 7px"class="form-control"></td>
+				</tr>
+				<tr>
+					<td style="color: #0e0e0e">LISCENCE_NO:</td>
+					<td><input type="text" name="mln" value="{{ b.liscence_no}}" minlength="12" maxlength="12" style="border-radius: 7px" class="form-control"></td>
+				</tr>
+				<tr>
+					<td style="color: #0e0e0e">NAME:</td>
+					<td><input type="text" name="mnm" value="{{ b.name }}" style="border-radius: 7px" class="form-control"></td>
+				</tr>
+				<tr>
+					<td style="color: #0e0e0e">C_EMAIL:</td>
+					<td><input type="email" name="mcmail" value="{{ b.email }}" style="border-radius: 7px" class="form-control"></td>
+				</tr>
+                <tr>
+                    <td></td>
+                    <td><img src="/static/{{ b.proof }}" height="50px" width="50px" style="border-radius: 7px"></td>
+                </tr>
+				<tr>
+					<td style="color: #0e0e0e">PROOF:</td>
+					<td><input type="file" name="mpf" value="{{ b.proof }}" style="border-radius: 7px" class="form-control"></td>
+				</tr>
+				<tr>
+					<td style="color: #0e0e0e">LOCATION:</td>
+					<td><input type="text" name="mloc" value="{{ b.location }}" style="border-radius: 7px" class="form-control"></td>
+				</tr>
+				<tr>
+					<td style="color: #0e0e0e">CONTACT:</td>
+					<td><input type="text" name="mcon" value="{{ b.contact }}"  style="border-radius: 7px" class="form-control"></td>
+				</tr>
+				<tr>
+					<td style="color: #0e0e0e">PASSWORD:</td>
+					<td><input type="password" name="mpsw" value="{{ b.password }}" required minlength="6" maxlength="6" style="border-radius: 7px" class="form-control"></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><input type="submit" name="btn" value="UPDATE"></td>
+				</tr>
+			</table>
+		</form>
+	</center>
+</body>
+</html>
+{% endblock %}

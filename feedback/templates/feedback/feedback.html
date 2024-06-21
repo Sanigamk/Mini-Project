@@ -1,0 +1,43 @@
+{% extends 'temp/main_user.html' %}
+{% block base %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>FEEDBACK</title>
+</head>
+<body>
+
+	<center>
+		<h1>FEEDBACK</h1>
+		<form method="post">
+            {% csrf_token %}
+			<table>
+				<tr>
+					<td style="color: #0e0e0e"> NAME OF TURF:</td>
+					<td><select name="nmt" required="" style="border-radius: 7px" class="form-control">
+						<option>-----SELECT----</option>
+                        {% for i in t %}
+						<option value="{{ i.turf_id }}">{{ i.turfname }}</option>
+                        {% endfor %}
+					</select>
+				</td>
+				</tr>
+				<tr>
+					<td style="color: #0e0e0e">FEEDBACK:</td>
+					<td><input type="text" name="fb" required="" style="border-radius: 7px" class="form-control"></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><input type="submit" name="btn" value="POST" style="border-radius: 7px"></td>
+				</tr>
+			</table>
+		</form>
+    {% if msg == "ok" %}
+    <script>
+        alert("Feedback Submitted")
+    </script>
+    {% endif %}
+	</center>
+</body>
+</html>
+{% endblock %}

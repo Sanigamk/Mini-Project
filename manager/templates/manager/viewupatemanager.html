@@ -1,0 +1,43 @@
+{% extends 'temp/main_manager.html' %}
+{% block base %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>MANAGE MANAGER</title>
+</head>
+<body>
+
+	<center>
+	<h1>UPDATE MANAGER</h1>
+	<table border="2" class="table table-striped">
+		<tr style="color: black">
+			<th>Companyname</th>
+			<th>Liscence_no</th>
+			<th>Name</th>
+			<th>c_email</th>
+			<th>Proof</th>
+			<th>Location</th>
+			<th>Contact</th>
+			<th>Password</th>
+			<th>Status</th>
+		</tr>
+        {% for i in b %}
+		<tr style="color: black">
+			<td>{{ i.company_name }}</td>
+			<td>{{ i.liscence_no }}</td>
+			<td>{{ i.name }}</td>
+			<td>{{ i.email }}</td>
+			<td><a href="/static/{{ i.proof }}"><img src="/static/{{ i.proof }}" style="height: 50px;width: 50px"></a> </td>
+			<td>{{ i.location }}</td>
+			<td>{{ i.contact }}</td>
+			<td>{{ i.password }}</td>
+			<td>{{ i.status }}</td>
+			<td><a href="/manager/mupdtpf/{{ i.manager_id }}">UPDATE</a></td>
+			<td><a href="/manager/delete/{{ i.manager_id }}">DELETE</a></td>
+		</tr>
+        {% endfor %}
+		</table>
+	</center>
+</body>
+</html>
+{% endblock %}

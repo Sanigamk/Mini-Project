@@ -1,0 +1,36 @@
+{% extends 'temp/main_admin.html' %}
+{% block base %}
+<html>
+<head>
+	<title>TURF DETAILS</title>
+</head>
+<body>
+
+<center>
+	<td>
+	<h1>TURF DETAILS</h1>
+	<table border="2" class="table table-striped">
+		<tr style="color: black">
+			<td>turfname</td>
+			<td>location</td>
+			<td>email</td>
+			<td>image</td>
+			<td>category</td>
+		</tr>
+        {% for i in b %}
+
+		<tr style="color: black">
+			<td>{{ i.turfname }}</td>
+			<td>{{ i.location }}</td>
+			<td>{{ i.email }}</td>
+            <td><a href="/static/{{ i.image }}"><img src="/static/{{ i.image }}" style="height: 50px;width: 50px"></a> </td>
+			<td>{{ i.category.category }}</td>
+{#        <td><a href="/static/{{ i.image }}">View</a> </td>#}
+		</tr>
+        {% endfor %}
+
+	</table>
+</centre>
+</body>
+</html>
+{% endblock %}

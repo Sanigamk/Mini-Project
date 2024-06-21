@@ -1,0 +1,32 @@
+{% extends 'temp/main_admin.html' %}
+{% block base %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CATEGORY</title>
+</head>
+<body>
+
+	<center>
+		<h1>CATEGORY</h1>
+		<form method="post">
+            {% csrf_token %}
+			<table>
+				<tr>
+					<td style="color: #0e0e0e">CATEGORY:</td>
+					<td><input type="text" name="ctgy" required="" style="border-radius: 7px" class="form-control"></td>
+				</tr>				<tr>
+					<td></td>
+					<td><input type="submit" name="btn" value="SUBMIT"></td>
+				</tr>
+			</table>
+		</form>
+        {% if msg == "success" %}
+        <script>
+            alert("Category added Successfull")
+        </script>
+        {% endif %}
+	</center>
+</body>
+</html>
+{% endblock %}

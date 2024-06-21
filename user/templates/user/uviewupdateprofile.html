@@ -1,0 +1,43 @@
+{% extends 'temp/main_user.html' %}
+{% block base %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>UPDATE USER</title>
+</head>
+<body>
+	<center>
+	<h1>UPDATE USER</h1>
+	<table border="2" class="table table-striped">
+		<tr style="color: black">
+			<td>name</td>
+			<td>age</td>
+			<td>email</td>
+			<td>housename</td>
+			<td>post</td>
+            <td>pin</td>
+			<td>district</td>
+			<td>phn_no</td>
+            <td>password</td>
+		</tr>
+        {% for i in a %}
+		<tr style="color: black">
+			<td>{{ i.name }}</td>
+			<td>{{ i.age }}</td>
+			<td>{{ i.email }}</td>
+			<td>{{ i.house_name }}</td>
+			<td>{{ i.post }}</td>
+            <td>{{ i.pin }}</td>
+			<td>Calicut</td>
+			<td>{{ i.phn_no }}</td>
+			<td>{{ i.password}}</td>
+			<td><a href="/user/pfedit/{{ i.user_id }} #ii">UPDATE</a></td>
+			<td><a href="/user/delete/{{ i.user_id }}">DELETE</a></td>
+		</tr>
+        {% endfor %}
+
+		</table>
+	</center>
+</body>
+</html>
+{% endblock %}

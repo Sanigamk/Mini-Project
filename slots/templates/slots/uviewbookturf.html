@@ -1,0 +1,45 @@
+{% extends 'temp/main_user.html' %}
+{% block base %}
+<html>
+<head>
+	<title>TURF DETAILS</title>
+</head>
+<body><center>
+	<h1>AVAILABLE TURF DETAILS</h1><br>
+<form method="post"style="padding: 5px">
+    {% csrf_token %}
+<td><input type="text" name="search" placeholder="Search Slot and Location Here"style="height: 40px;width: 250px">
+
+    <input type="submit"  value="search" class="btn btn-primary"></td>
+</form>
+	<table border="2" class="table table-striped">
+		<tr style="color: black">
+			<th>Turfname</th>
+			<th>Location</th>
+			<th>Email</th>
+			<th>Image</th>
+			<th>Category</th>
+			<th>Price</th>
+			<th>Starttime</th>
+			<th>Endtime</th>
+		</tr>
+        {% for i in c %}
+
+		<tr style="color: black">
+			<td>{{ i.turf.turfname}}</td>
+			<td>{{ i.turf.location }}</td>
+			<td>{{ i.turf.email}}</td>
+			<td><a href="/static/{{ i.turf.image }}"><img src="/static/{{ i.turf.image }}" width="50" height="50"></a> </td>
+			<td>{{ i.turf.category.category}}</td>
+			<td>{{ i.price }}</td>
+			<td>{{ i.start_time}}</td>
+			<td>{{ i.end_time }}</td>
+{#			<td><a href="{% url 'bk' idd=i.slot_id %}">BOOK</a></td>#}
+        <td><a href="/booking/bookturf/{{ i.slot_id }}/{{ i.turf_id }} #ii"class="btn btn-outline-primary">BOOK</a></td>
+		</tr>
+{% endfor %}
+	</table>
+</center>
+</body>
+</html>
+{% endblock %}

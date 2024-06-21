@@ -1,0 +1,56 @@
+{% extends 'temp/main_manager.html' %}
+{% block base %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>UPDATE TURF DETAILS</title>
+</head>
+<body>
+
+	<center>
+		<h1>UPDATE TURF DETAILS</h1>
+		<form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+			<table>
+				<tr>
+					<td style="color: black"> TURF NAME:</td>
+					<td><input type="text" name="tnm" value="{{ c.turfname }}" style="border-radius: 7px"class="form-control"></td>
+				</tr>
+				<tr>
+					<td style="color: black">LOCATION:</td>
+					<td><input type="text" name="tloc" value="{{ c.location }}" style="border-radius: 7px"class="form-control"></td>
+				</tr>
+				<tr>
+					<td style="color: black">EMAIL:</td>
+					<td><input type="email" name="tmail" value="{{ c.email}}" style="border-radius: 7px"class="form-control"></td>
+				</tr>
+                <tr>
+                    <td style="color: black"></td>
+                    <td><img src="/static/{{ c.image }}" height="50px" width="50px" style="border-radius: 7px"></td>
+                </tr>
+				<tr>
+					<td style="color: black">IMAGE:</td>
+					<td style="color: black"><input type="file" name="timg" value="{{ c.image }}" style="border-radius: 7px;color: black"></td>
+				</tr>
+
+				<tr>
+					<td style="color: black">CATEGORY:</td>
+					<td><select name="st" style="border-radius: 7px" class="form-control">
+						<option value="{{ c.category_id }}">{{ c.category.category }}</option>
+
+                        {% for i in xx %}
+                        <option value="{{ i.category_id }}">{{ i.category }}</option>
+                        {% endfor %}
+					</select>
+				</td>
+				</tr>
+					<td></td>
+					<td><input type="submit" name="btn" value="UPDATE" style="border-radius: 7px"></td>
+				</tr>
+			</table>
+		</form>
+	</center>
+</body>
+</html>
+{% endblock %}
+

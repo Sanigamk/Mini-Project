@@ -1,0 +1,54 @@
+{% extends 'temp/main_manager.html' %}
+{% block base %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Manage booking</title>
+</head>
+<body>
+
+	<center>
+	<h1>MANAGE BOOKING</h1>
+	<table border="2" class="table table-striped">
+		<tr style="color: black">
+			<th>Turf name</th>
+			<th>Location</th>
+			<th>lmage</th>
+			<th>Category</th>
+			<th>Date</th>
+			<th>Start time</th>
+            <th>End time</th>
+			<th>Price</th>
+			<th>Status</th>
+            <th></th>
+            <th></th>
+		</tr>
+        {% for i in a %}
+		<tr style="color: black">
+			<td>{{ i.slot.turf.turfname }}</td>
+			<td>{{ i.slot.turf.location }}</td>
+			<td><img src="/static/{{ i.slot.turf.image}}" height="50px" width="50px"></td>
+			<td>{{ i.slot.turf.category.category}}</td>
+			<td>{{ i.date }}</td>
+			<td>{{ i.slot.start_time }}</td>
+			<td>{{ i.slot.end_time }}</td>
+            <td>{{ i.slot.price }}</td>
+			<td>{{ i.status }}</td>
+            {% if i.status == "Approved" %}
+                <td><a href="/booking/reject/{{ i.booking_id }}#pp" class="btn btn-outline-primary"style="border-radius: 15px">REJECT</a></td>
+            {% endif %}
+            {% if i.status == "Rejected" %}
+			    <td><a href="/booking/accept/{{ i.booking_id }}#pp" class="btn btn-outline-primary"style="border-radius: 15px">ACCEPT</a></td>
+            {% endif %}
+            {% if i.status == "Booked" %}
+                <td><a href="/booking/accept/{{ i.booking_id }}#pp" class="btn btn-outline-primary"style="border-radius: 15px">ACCEPT</a></td>
+			    <td><a href="/booking/reject/{{ i.booking_id }}#pp" class="btn btn-outline-primary"style="border-radius: 15px">REJECT</a></td>
+            {% endif %}
+
+		</tr>
+        {% endfor %}
+		</table>
+	</center>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'temp/main_admin.html' %}
+{% block base %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>MANAGE MANAGER</title>
+</head>
+<body>
+
+	<center>
+	<h1>MANAGE MANAGER</h1>
+	<table border="2" class="table table-striped">
+		<tr style="color: black">
+            <td>company_name</td>
+            <td>liscence_no</td>
+			<td>name</td>
+			<td>email</td>
+            <td>proof</td>
+			<td>location</td>
+			<td>contact</td>
+			<td>status</td>
+		</tr>
+        {% for i in a %}
+		<tr style="color: black">
+            <td>{{ i.company_name }}</td>
+            <td>{{ i.liscence_no }}</td>
+            <td>{{ i.name }}</td>
+			<td>{{ i.email }}</td>
+			<td><img src="/static/{{ i.proof }}" width="50" height="50"></td>
+			<td>{{ i.location}}</td>
+			<td>{{ i.contact }}</td>
+			<td>{{ i.status }}</td>
+            <td><a href="/static/{{ i.proof }}">View</a> </td>
+            {% if i.status == 'Accepted' %}
+			<td><a href="/manager/reject/{{ i.manager_id }}#ee" class="btn btn-primary">REJECT</a></td>
+        {% elif i.status == 'Rejected' %}
+        <td><a href="/manager/accept/{{ i.manager_id }}#ee" class="btn btn-primary">ACCEPT</a></td>
+        {% else %}
+        <td><a href="/manager/reject/{{ i.manager_id }}#ee" class="btn btn-primary">REJECT</a></td>
+        <td><a href="/manager/accept/{{ i.manager_id }}#ee" class="btn btn-primary">ACCEPT</a></td>
+        {% endif %}
+		</tr>
+        {% endfor %}
+		</table>
+	</center>
+</body>
+</html>
+{% endblock %}

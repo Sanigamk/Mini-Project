@@ -1,0 +1,65 @@
+{% extends 'temp/main_home.html' %}
+{% block base %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>MANAGER REGISTRATION</title>
+</head>
+<body>
+
+	<center>
+		<h1>MANAGER REGISTRATION</h1>
+		<form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+			<table>
+				<tr>
+					<td style="color: black">COMPANY NAME:</td>
+					<td><input type="text" name="mcn" required class="form-control"></td>
+				</tr>
+				<tr>
+					<td style="color: black">LISCENCE_NO:</td>
+					<td><input type="text" name="mln" required minlength="12" maxlength="12"class="form-control"></td>
+				</tr>
+				<tr>
+					<td style="color: black">NAME:</td>
+					<td><input type="text" name="mnm" required class="form-control"></td>
+				</tr>
+				<tr>
+					<td style="color: black">C_EMAIL:</td>
+					<td><input type="email" name="mcmail" required class="form-control"></td>
+				</tr>
+				<tr>
+					<td style="color: black">PROOF:</td>
+					<td><input type="file" name="mpf" required class="form-control"></td>
+				</tr>
+				<tr>
+					<td style="color: black">LOCATION:</td>
+					<td><input type="text" name="mloc" required class="form-control"></td>
+				</tr>
+				<tr>
+					<td style="color: black">CONTACT:</td>
+					<td><input type="text" name="mcon" required pattern="[0-9]{10}" minlength="10" maxlength="10" class="form-control"></td>
+				</tr>
+				<tr>
+					<td style="color: black">PASSWORD:</td>
+					<td><input type="password" name="mpsw" required minlength="6" maxlength="6" class="form-control"></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><input type="submit" name="btn" value="SUBMIT"></td>
+				</tr>
+			</table>
+		</form>
+        {% if msg == "success"%}
+    <script>
+     alert("Successfuly Registered")
+    </script>
+     {% elif msg == "Manager exist" %}
+     <script>
+     alert("User exist")
+     </script>
+{% endif %}
+    </center>
+</body>
+</html>
+{% endblock %}

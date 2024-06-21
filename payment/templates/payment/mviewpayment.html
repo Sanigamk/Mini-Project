@@ -1,0 +1,38 @@
+{% extends 'temp/main_manager.html' %}
+{% block base %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>PAYMENT STATUS</title>
+</head>
+<body>
+
+<center>
+	<td>
+	<h1>PAYMENT</h1>
+	<table border="2" class="table table-striped">
+		<tr style="color: black">
+			<th>Card holder name</th>
+			<th>Cvv</th>
+			<th>Date</th>
+            <th>Turf</th>
+            <th>Slot(start and end time)</th>
+			<th>Amount</th>
+		</tr>
+        {% for i in a %}
+		<tr style="color: black">
+			<td>{{ i.card_holder_name }}</td>
+			<td>{{ i.cvv }}</td>
+			<td>{{ i.date }}</td>
+            <td>{{ i.slot.turf.turfname }}</td>
+            <td>{{ i.slot.start_time }},{{ i.slot.end_time }}</td>
+			<td>{{ i.amount }}</td>
+		</tr>
+        {% endfor %}
+
+	</table>
+</td>
+</center>
+</body>
+</html>
+{% endblock %}
